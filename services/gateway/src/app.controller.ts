@@ -21,11 +21,11 @@ export class AppController {
       // res.write('<p>views: ' + req.session.views + '</p>')
       // res.write('<p>expires in: ' + (req.session.cookie.maxAge / 1000) + 's</p>')
       // res.end()
-      return 'views: ' + req.session.views + ' mo'
+      return 'views: ' + req.session.views + ' mo '+req.session.id
   } else {
       console.log(8836);
       req.session.views = 1
-   return 'welcome to the session demo. refresh!'
+   return 'welcome to the session demo. refresh! '+req.session.id
   }
    
   }

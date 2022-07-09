@@ -23,12 +23,12 @@ let AppController = class AppController {
         console.log({ sess: req.session });
         if (req.session.views) {
             req.session.views++;
-            return 'views: ' + req.session.views + ' mo';
+            return 'views: ' + req.session.views + ' mo ' + req.session.id;
         }
         else {
             console.log(8836);
             req.session.views = 1;
-            return 'welcome to the session demo. refresh!';
+            return 'welcome to the session demo. refresh! ' + req.session.id;
         }
     }
     async addMany(data) {

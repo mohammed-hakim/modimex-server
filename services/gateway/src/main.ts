@@ -66,7 +66,7 @@ console.log({URL2});
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 30 * 12 * 10,
           httpOnly: true, //not access in browser
-          sameSite: 'lax', //'lax', //csrf
+          sameSite: 'none', //'lax', //csrf
           secure: false //__prod__, //https
       }
     }),
