@@ -73,7 +73,7 @@
         "copy": "concurrently --kill-others   \"yarn copy1\" \"yarn copy2\" \"yarn copy3\" \"yarn copy4\" \"yarn copy5\" \"yarn copy6\" \"yarn copy7\" \"yarn copy8\""
 
         ,
-        "gitup": "git add . && git commit -am 'no' && git push -u origin"
+        "gitup": "git add . && git commit -am 'update main for session' && git push -u origin main"
 
     },
     "description": "E-commerce using NestJS Microservices architecture.",

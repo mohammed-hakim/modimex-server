@@ -19,8 +19,17 @@ let AppController = class AppController {
     constructor(appService) {
         this.appService = appService;
     }
-    async getHello2() {
-        return this.appService.getHello();
+    async getHello22(req) {
+        console.log({ sess: req.session });
+        if (req.session.views) {
+            req.session.views++;
+            return 'views: ' + req.session.views + ' mo';
+        }
+        else {
+            console.log(8836);
+            req.session.views = 1;
+            return 'welcome to the session demo. refresh!';
+        }
     }
     async addMany(data) {
         return this.appService.addProds(data.products);
@@ -31,10 +40,11 @@ let AppController = class AppController {
 };
 __decorate([
     common_1.Get(),
+    __param(0, common_1.Req()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
-], AppController.prototype, "getHello2", null);
+], AppController.prototype, "getHello22", null);
 __decorate([
     common_1.Post('u54545545afsahjkrewuirewqttgyppp'),
     __param(0, common_1.Body()),
