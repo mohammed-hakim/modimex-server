@@ -1,0 +1,130 @@
+{
+    "private": true,
+    "workspaces": [
+        "services/*"
+    ],
+    "scripts": {
+        "ppreinstall": "export NODE_OPTIONS='--max-old-space-size=8192'",
+        "redisup": "C:/Users/user/Desktop/redisHH/redis-server.exe",
+
+
+        "start1": "cd services/gateway && yarn start:dev",
+        "start2": "cd services/users && yarn start:dev",
+        "start3": "cd services/products && yarn start:dev",
+        "start4": "cd services/orders && yarn start:dev",
+        "start5": "cd services/stats && yarn start:dev",
+        "start6": "cd services/reviews && yarn start:dev",
+        "start7": "cd services/offers && yarn start:dev",
+        "start8": "cd services/statistics && yarn start:dev",
+        "start9": "cd services/shared && yarn start:dev",
+        "devo": "concurrently --kill-others   \"yarn start1\" \"yarn start2\" \"yarn start3\" \"yarn start4\" \"yarn start5\" \"yarn start6\" \"yarn start7\" \"yarn start8\"",
+        "dev2": "concurrently --kill-others  \"yarn redisup\"  \"yarn start1\" \"yarn start2\" \"yarn start3\" \"yarn start4\" \"yarn start5\" \"yarn start6\" \"yarn start7\" \"yarn start8\"",
+
+
+
+        "build1": "cd dists/gateway && node dist/main",
+        "build2": "cd dists/users && node dist/main",
+        "build3": "cd dists/products && node dist/main",
+        "build4": "cd dists/orders2 && node dist/main",
+        "build5": "cd dists/stats && node dist/main",
+        "build6": "cd dists/reviews && node dist/main",
+        "build7": "cd dists/offers && node dist/main",
+        "build8": "cd dists/statistics && node dist/main",
+        "build9": "cd dists/shared && node dist/main",
+        "start": "concurrently --kill-others   \"yarn build1\" \"yarn build2\" \"yarn build3\" \"yarn build4\" \"yarn build5\" \"yarn build6\" \"yarn build7\" \"yarn build8\"",
+
+
+        "buildy1": "cd ./dists && cp baraka.png gateway/images && node gateway/main",
+        "buildy2": "cd ./dists/users && node ./main",
+        "buildy3": "cd ./dists/products && node ./main",
+        "buildy4": "cd ./dists/orders && node ./main",
+        "buildy5": "cd ./dists/stats && node ./main",
+        "buildy6": "cd ./dists/reviews && node ./main",
+        "buildy7": "cd ./dists/offers && node ./main",
+        "buildy8": "cd ./dists/statistics && node ./main",
+        "buildy9": "cd ./dists/shared && node ./main",
+        "devoooo": "concurrently --kill-others   \"yarn buildy1\" \"yarn buildy2\" \"yarn buildy3\" \"yarn buildy4\" \"yarn buildy5\" \"yarn buildy6\" \"yarn buildy7\" \"yarn buildy8\"",
+
+        "dev": "concurrently --kill-others   \"npm run buildy1\" \"npm run buildy2\" \"npm run buildy3\" \"npm run buildy4\" \"npm run buildy5\" \"npm run buildy6\" \"npm run buildy7\" \"npm run buildy8\"",
+
+
+
+        "bold1": "cd services/gateway && yarn build+",
+        "bold2": "cd services/users && yarn build+",
+        "bold3": "cd services/products && yarn build+",
+        "bold4": "cd services/orders && yarn build+",
+        "bold5": "cd services/stats && yarn build+",
+        "bold6": "cd services/reviews && yarn build+",
+        "bold7": "cd services/offers && yarn build+",
+        "bold8": "cd services/statistics && yarn build+",
+        "bold9": "cd services/shared && yarn build+",
+        "bold": "concurrently --kill-others   \"yarn bold1\" \"yarn bold2\" \"yarn bold3\" \"yarn bold4\" \"yarn bold5\" \"yarn bold6\" \"yarn bold7\" \"yarn bold8\"",
+
+
+        "copy1": "cp -avr ./services/gateway/dist/ ./dists/gateway",
+        "copy2": "cp -avr ./services/users/dist/  ./dists/users",
+        "copy3": "cp -avr ./services/products/dist/  ./dists/products",
+        "copy4": "cp -avr ./services/orders/dist/  ./dists/orders",
+        "copy5": "cp -avr ./services/stats/dist/  ./dists/stats",
+        "copy6": "cp -avr ./services/reviews/dist/  ./dists/reviews",
+        "copy7": "cp -avr ./services/offers/dist/  ./dists/offers",
+        "copy8": "cp -avr ./services/statistics/dist/  ./dists/statistics",
+        "copy9": "cp -avr ./services/shared/  ./dists/shared",
+        "copy": "concurrently --kill-others   \"yarn copy1\" \"yarn copy2\" \"yarn copy3\" \"yarn copy4\" \"yarn copy5\" \"yarn copy6\" \"yarn copy7\" \"yarn copy8\""
+
+        ,
+        "gitup": "git add . && git commit -am 'no' && git push -u origin"
+
+    },
+    "description": "E-commerce using NestJS Microservices architecture.",
+    "author": "Hakim",
+    "license": "MIT",
+    "dependencies": {
+        "@commerce/shared": "file:./shared",
+        "@nestjs/common": "^7.5.1",
+        "@nestjs/core": "^7.5.1",
+        "@nestjs/graphql": "^7.9.1",
+        "@nestjs/microservices": "^7.6.17",
+        "@nestjs/platform-express": "^7.5.1",
+        "@nestjs/typeorm": "^7.1.5",
+        "apollo-server-express": "^2.19.0",
+        "argon2": "^0.27.1",
+        "axios": "^0.21.1",
+        "bcryptjs": "^2.4.3",
+        "class-transformer": "^0.3.1",
+        "class-validator": "^0.12.2",
+        "concurrently": "^5.3.0",
+        "connect-redis": "^5.0.0",
+        "date-fns": "^2.16.1",
+        "dotenv": "^8.2.0",
+        "express-mung": "^0.5.1",
+        "express-session": "^1.17.1",
+        "googleapis": "^66.0.0",
+        "graphql": "^15.4.0",
+        "graphql-tools": "^7.0.2",
+        "graphql-type-json": "^0.3.2",
+        "graphql-upload": "^11.0.0",
+        "helmet": "^4.2.0",
+        "hpp": "^0.2.3",
+        "ioredis": "^4.27.3",
+        "jsonwebtoken": "^8.5.1",
+        "mime-types": "^2.1.27",
+        "nodemailer": "^6.4.17",
+        "pg": "^8.5.1",
+        "redis": "^3.0.2",
+        "reflect-metadata": "^0.1.13",
+        "request": "^2.88.2",
+        "rimraf": "^3.0.2",
+        "rxjs": "^6.6.3",
+        "sharp": "0.26.0",
+        "type-graphql": "^1.1.1",
+        "typeorm": "^0.2.29",
+        "uuid": "^8.3.2",
+        "x-xss-protection": "^2.0.0"
+    },
+
+    "engines": {
+        "node": "16.15.1",
+        "yarn": "1.22.19"
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "outDir": "./dist2",
+    "baseUrl": "./src",
+    "incremental": true
+    // "paths": {
+    //   "@commerce/shared": ["../shared"]
+    // }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}

@@ -1,0 +1,443 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Success {
+  title: String
+  sentence: String
+  redirect: String
+}
+
+type userDTOC {
+  id: String!
+  name: String!
+  email: String!
+  token: String
+  adress: String
+  phone: String
+  money: Float
+  bought_items: Int
+  seller: Boolean!
+  is_admin: Boolean!
+  created_at: String
+  kwalaDcd5vrs: String
+  GRE5509jbgUU91: String
+}
+
+type basicERR {
+  field: String
+  msg: String
+  status: String
+  title: String
+  sentence: String
+}
+
+type ProductDTOC {
+  id: String!
+  price: Float
+  title: String!
+  oldprice: Float
+  quantity: Int
+  sells: Int
+  category: String
+  mark: String
+  images: [String!]!
+  blured_images: [String!]!
+  description: String
+  features: [String!]
+  colors: [String!]
+  sizes: [String!]
+  created_at: String
+  user: userDTOC
+  reviews: [ReviewDTOC!]
+  reviewsavg: JSON
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type UserResponse {
+  errors: [basicERR!]
+  success: Success
+  user: userDTOC
+}
+
+type ProductResponse {
+  errors: [basicERR!]
+  success: Success
+  product: ProductDTOC
+}
+
+type OfferDTOC {
+  id: String!
+  description: String
+  category: String
+  mark: String
+  sells: Int
+  title: String!
+  features: [String!]
+  images: [String!]!
+  blured_images: [String!]!
+  products_ids: [String!]
+  price: String!
+  quantity: Int!
+  original_price: Float
+  created_at: String
+  reviews: [ReviewDTOC!]
+  reviewsavg: JSON
+  products: [ProductDTOC!]
+}
+
+type ChildDTOC {
+  id: String!
+  prod: ProductDTOC
+  color: String
+  size: String
+}
+
+type Promo {
+  code: String
+  images: [String!]
+  price: Float
+  reduction: Int
+}
+
+type OfferResponse {
+  errors: [basicERR!]
+  success: Success
+  offer: OfferDTOC
+}
+
+type OffersResponse {
+  errors: [basicERR!]
+  more: Boolean
+  offers: [OfferDTOC!]
+}
+
+type ProductsResponse {
+  errors: [basicERR!]
+  more: Boolean
+  products: [ProductDTOC!]
+}
+
+type UsersResponse {
+  errors: [basicERR!]
+  more: Boolean
+  users: [userDTOC!]
+}
+
+type ProductOrderC {
+  product: ProductDTOC
+  offer: OfferDTOC
+  quantity_ordered: Int!
+  color: String
+  size: String
+  children: [ChildDTOC!]
+}
+
+type orderDTOC {
+  user: userDTOC!
+  total_price: Float!
+  products: [ProductOrderC!]!
+  created_at: String!
+  status: String!
+  failedReason: String
+  shipping: String
+  code: Promo
+  id: String!
+  prod: ProductDTOC!
+  offers: ProductDTOC!
+}
+
+type OrdersResponse {
+  errors: [basicERR!]
+  more: Boolean
+  orders: [orderDTOC!]
+}
+
+type OrderResponse {
+  errors: [basicERR!]
+  success: Success
+  order: orderDTOC
+}
+
+type SimpleArg {
+  name: String
+  link: String
+  images: [String!]
+}
+
+type Shipping {
+  name: String
+  id: String
+  price: Float
+  time: Int
+  images: [String!]
+}
+
+type SimpleState {
+  mark: SimpleArg
+  event: SimpleArg
+  category: SimpleArg
+  shipping: Shipping
+  promo: Promo
+  currency: String
+  success: Success
+  errors: [basicERR!]
+}
+
+type statsResponse {
+  errors: [basicERR!]
+  marks: [SimpleArg!]
+  events: [SimpleArg!]
+  categories: [SimpleArg!]
+  shippings: [Shipping!]
+  promos: [Promo!]
+  max_price: Float
+  max_price_offer: Float
+  currency: String
+}
+
+type statisticsResponse {
+  errors: [basicERR!]
+  statistics: [Statistic!]
+}
+
+type Statistic {
+  id: String
+  month: Int
+  year: Int
+  day: Int
+  sells_quantity: Int
+  sells_price: Float
+  sells_data: String
+}
+
+type ReviewDTOC {
+  rate: Float!
+  description: String!
+  id: String!
+  productId: String
+  isOffer: Boolean
+  created_at: String!
+  user: userDTOC!
+}
+
+type ReviewResponse {
+  review: ReviewDTOC!
+  success: Success
+  errors: [basicERR!]
+}
+
+type ReviewsResponse {
+  reviews: [ReviewDTOC!]
+  errors: [basicERR!]
+  more: Boolean
+}
+
+type EventDTOC {
+  title: String
+  creator: String
+  images: [String!]
+  blured_images: [String!]
+  description: String
+  link: String
+  created_at: String
+  id: String
+}
+
+type EventResponse {
+  event: EventDTOC
+  success: Success
+  errors: [basicERR!]
+}
+
+type EventsResponse {
+  events: [EventDTOC!]!
+  errors: [basicERR!]
+}
+
+type SimpleResponse {
+  errors: [basicERR!]
+  success: Success
+}
+
+type Query {
+  mineOrders(options: P_Options!): OrdersResponse!
+  userOrders(options: P_Options!): OrdersResponse!
+  allOrders(options: P_Options!): OrdersResponse!
+  getReviews(id: String!, options: P_Options!): ReviewsResponse!
+  users(options: P_Options): UsersResponse!
+  user(id: String!): UserResponse!
+  searchUsers(options: P_Options!): UsersResponse!
+  me: UserResponse!
+  products(options: P_Options): ProductsResponse!
+  fetchProductsByIds(options: P_Options): ProductsResponse!
+  search(options: P_Options): ProductsResponse!
+  mine_products(options: P_Options): ProductsResponse!
+  showProduct(id: String!): ProductResponse!
+  getOffers(options: P_Options): OffersResponse!
+  search_offers(options: P_Options): OffersResponse!
+  showOffer(id: String!): OfferResponse!
+  getStats: statsResponse!
+  getEvents: EventsResponse!
+  getStatistics: statisticsResponse!
+}
+
+input P_Options {
+  limit: Int
+  skip: Int
+  cursor: String
+  sortBy: String
+  marks: [String!]
+  status: [String!]
+  categories: [String!]
+  max: Float
+  min: Float
+  search_words: String
+  notID: String
+  mine: Boolean
+  ids: [String!] = []
+  userId: String
+  ids2: [[String!]!]
+  select: [String!]
+}
+
+type Mutation {
+  deleteOrder(id: String!): SimpleResponse!
+  upStatus(code: String, totalNoPromo: String, total: String, prices: [Float!], reason: String, status: String!, id: String!): SimpleResponse!
+  createOrder(options: order_opts!): OrderResponse!
+  addReview(review: Review!): ReviewResponse!
+  deleteReview(id: String!): Boolean!
+  login(data: LoginUser!): UserResponse!
+  register(data: RegisterUser!): UserResponse!
+  logout: UserResponse!
+  forgetPassword(email: String!): Boolean!
+  changePassword(data: ChangePass!): UserResponse!
+  updateUser(data: User!): UserResponse!
+  createProduct(images: [Upload!], token: String, data: CreateProduct): ProductResponse!
+  updateProduct(id: String!, data: UpdateProduct!): ProductResponse!
+  deleteProduct(id: String!): SimpleResponse!
+  addOffer(images: [Upload!], token: String, data: Offer): OfferResponse!
+  updateOffer(id: String!, data: Offer!): OfferResponse!
+  deleteOffer(id: String!): SimpleResponse!
+  setState(image: Upload, token: String!, name: String!, what: String!): SimpleState!
+  setStateNOIMG(name: String!, what: String!): SimpleState!
+  reSetState(arg: [DTOSimpleArg!], what: String!): SimpleState!
+  addEvent(images: [Upload!], token: String, event: Event!): EventResponse!
+  deleteEvent(id: String!): SimpleResponse!
+}
+
+input order_opts {
+  products: [CreateOrder!]!
+  shipping: String
+  code: String
+}
+
+input CreateOrder {
+  quantity: Float!
+  id: String
+  offerId: String
+  color: String
+  size: String
+  children: [Child!]
+}
+
+input Child {
+  id: String!
+  color: String
+  size: String
+}
+
+input Review {
+  rate: Float!
+  description: String!
+  productId: String
+  isOffer: Boolean = false
+}
+
+input LoginUser {
+  email: String!
+  password: String!
+}
+
+input RegisterUser {
+  email: String!
+  password: String!
+  name: String!
+  password_confirmation: String!
+  seller: Boolean!
+}
+
+input ChangePass {
+  token: String!
+  password: String!
+}
+
+input User {
+  name: String
+  email: String
+  adress: String
+  phone: String
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
+
+input CreateProduct {
+  price: Int
+  title: String
+  description: String
+  mark: String
+  category: String
+  quantity: Int
+  features: [String!]
+  colors: [String!]
+  sizes: [String!]
+}
+
+input UpdateProduct {
+  price: Float
+  oldprice: Float
+  title: String
+  description: String
+  mark: String
+  category: String
+  quantity: Int
+  features: [String!]
+  colors: [String!]
+  sizes: [String!]
+}
+
+input Offer {
+  title: String
+  description: String
+  category: String
+  mark: String
+  features: [String!]
+  price: Float
+  quantity: Int
+  original_price: Float
+  products_ids: [String!]
+}
+
+input DTOSimpleArg {
+  name: String
+  link: String
+  price: Float
+  time: Int
+  code: String
+  reduction: Int
+  images: [String!]
+}
+
+input Event {
+  title: String
+  description: String
+  creator: String
+  link: String
+  images: [String!]
+  blured_images: [String!]
+}

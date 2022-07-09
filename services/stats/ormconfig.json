@@ -1,0 +1,14 @@
+[
+  {
+    "type": "postgres",
+    "database": "learn2",
+    "username": "postgres",
+    "password": "hakim8989$",
+    "logging": true,
+    "synchronize": true,
+    "migrations": ["dist/migrations/*{.ts,.js}"],
+    "migrationsTableName": "migrations_typeorm",
+    "migrationsRun": true,
+    "entities": ["dist/**/*.entity.js"]
+  }
+]
