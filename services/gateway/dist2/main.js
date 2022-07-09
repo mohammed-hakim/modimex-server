@@ -27,6 +27,7 @@ const app_module_1 = require("./app.module");
 const express_session_1 = __importDefault(require("express-session"));
 const connect_redis_1 = __importDefault(require("connect-redis"));
 const shared_1 = require("@commerce/shared");
+const redis_1 = require("./utils/redis");
 const graphql_upload_1 = require("graphql-upload");
 const bodyParser = __importStar(require("body-parser"));
 const validation_pipe_1 = require("./pipes/validation.pipe");
@@ -36,12 +37,10 @@ const mung = require('express-mung');
 const helmet = require('helmet');
 const xXssProtection = require('x-xss-protection');
 const hpp = require('hpp');
-const ioredis_1 = __importDefault(require("ioredis"));
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const RedisStore = connect_redis_1.default(express_session_1.default);
     console.log({ URL2: shared_1.URL2 });
-    const redis = new ioredis_1.default();
     let PORT = process.env.PORT || 8080;
     console.log({ PORT });
     app.enableCors({
@@ -60,7 +59,7 @@ async function bootstrap() {
     app.use('/images', express_1.default.static(path_1.default.join(__dirname, 'images')));
     app.use(graphql_upload_1.graphqlUploadExpress({ maxFiles: 10 }));
     app.use(express_session_1.default({
-        store: new RedisStore({ client: redis, disableTouch: true }),
+        store: new RedisStore({ client: redis_1.redis, disableTouch: true }),
         secret: 'keyboard cat',
         name: shared_1.COOKI_NAME,
         saveUninitialized: false,

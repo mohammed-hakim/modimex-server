@@ -16,7 +16,7 @@ const helmet = require('helmet');
 const xXssProtection = require('x-xss-protection');const hpp = require('hpp');
 // import * as xssFilter from 'x-xss-protection';
 // import * as hpp from 'hpp';
-import Redis from 'ioredis';
+// import Redis from 'ioredis';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -24,7 +24,7 @@ async function bootstrap() {
 
 console.log({URL2});
 
-  const redis = new Redis();
+  // const redis = new Redis();
   let PORT = process.env.PORT || 8080;
   console.log({PORT});
   
