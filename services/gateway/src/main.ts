@@ -59,24 +59,25 @@ console.log({URL2});
       // saveUninitialized: false,
       // resave: false,
       store: new RedisStore({ client: redis, disableTouch: true }),
-      secret: 'keyboard cat',
+      secret: 'jakfsjdhkahsdsajhjfkhsh',
       name: COOKI_NAME,
+      proxy:true,
       saveUninitialized: false,
       resave: false,
       cookie: {
           maxAge: 1000 * 60 * 60 * 24 * 30 * 12 * 10,
           httpOnly: true, //not access in browser
           sameSite: 'none', //'lax', //csrf
-          secure: false //__prod__, //https
+          secure: true //__prod__, //https
       }
     }),
   );
 
-// app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 // app.enable('trust proxy')
 
 
-  console.log({__prod__  },'what a time btro !!');
+  console.log({__prod__  },'what a time btro !! 2');
   
 
   // app.use(helmet());

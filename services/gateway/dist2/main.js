@@ -62,16 +62,18 @@ async function bootstrap() {
         store: new RedisStore({ client: redis_1.redis, disableTouch: true }),
         secret: 'keyboard cat',
         name: shared_1.COOKI_NAME,
+        proxy: true,
         saveUninitialized: false,
         resave: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 30 * 12 * 10,
             httpOnly: true,
-            sameSite: 'none',
+            sameSite: false,
             secure: false
         }
     }));
-    console.log({ __prod__: shared_1.__prod__ }, 'what a time btro !!');
+    app.set('trust proxy', 1);
+    console.log({ __prod__: shared_1.__prod__ }, 'what a time btro !! 2');
     app.use(bodyParser.urlencoded({ extended: true }));
     app.useGlobalPipes(new validation_pipe_1.ValidationPipeEr());
     app.use(mung.json(function transform(body, req, res) {
