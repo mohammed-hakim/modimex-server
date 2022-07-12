@@ -60,7 +60,7 @@ async function bootstrap() {
     app.use(graphql_upload_1.graphqlUploadExpress({ maxFiles: 10 }));
     app.use(express_session_1.default({
         store: new RedisStore({ client: redis_1.redis, disableTouch: true }),
-        secret: 'keyboard cat',
+        secret: 'jakfsjdhkahsdsajhjfkhsh',
         name: shared_1.COOKI_NAME,
         proxy: true,
         saveUninitialized: false,
@@ -68,8 +68,8 @@ async function bootstrap() {
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 30 * 12 * 10,
             httpOnly: true,
-            sameSite: false,
-            secure: false
+            sameSite: 'none',
+            secure: true
         }
     }));
     app.set('trust proxy', 1);
